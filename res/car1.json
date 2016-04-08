@@ -1,0 +1,10 @@
+{
+"vehicles":[
+   	{"make":"Opel", "model":"Astra", "year":"1999", "value":"800.00", "noo":"2"}, 
+    {"make":"Toyota", "model":"RAV4", "year":"2006", "value":"15000.00", "noo":"2"}, 
+    {"make":"Mazda", "model":"323F", "year":"1998", "value":"1000.00", "noo":"1"}, 
+    {"make":"Ford", "model":"Fiesta", "year":"2009", "value":"8000.00", "noo":"3"}, 
+    {"make":"Alfa", "model":"Romeo", "year":"2005", "value":"7500.00", "noo":"1"}
+
+]
+}
