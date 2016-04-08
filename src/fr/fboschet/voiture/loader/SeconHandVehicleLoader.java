@@ -37,6 +37,7 @@ public class SeconHandVehicleLoader implements JSONParser {
 		VehicleBuilder vb = SecondHandVehicleBuilder.getInstance();
 		
 		try {
+			// Read a file (java-lambda style)
 			Files.lines(toParse.toPath()).forEach((String s) -> sb.append(s));
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -48,9 +49,5 @@ public class SeconHandVehicleLoader implements JSONParser {
 		for(int i = 0; i < vehicles.length(); i++) {
 			lv.add(vb.build(vehicles.getJSONObject(i)));
 		}
-		
 	}
-	
-	
-
 }

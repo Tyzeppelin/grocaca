@@ -33,7 +33,9 @@ public class SecondHandVehicleTester{
 //		vehicles[2]=v3;
 //		vehicles[3]=v4;
 //		vehicles[4]=v5;
-
+		
+		
+		// It's very boring to add vehicles in the main mathod. So I made a lil' JSON parser and a VehicleBuilder
 		JSONParser jp = SeconHandVehicleLoader.getInstance("res/car1.json");
 
 		List<Vehicle> vehicles = new ArrayList<>();

@@ -2,6 +2,27 @@ package fr.fboschet.voiture;
 
 import java.time.Year;
 
+
+// NOTE FOR THE PERSON WHO WRITE THIS FILE
+// ========================================
+//
+// Why are you writing code like:
+// ``
+// if (boolean_expression)
+//  	return true
+// else
+//      return false
+// ``
+//
+// Do you even know how boolean algebra works?
+// Why aren't you writing :
+// ``
+// return boolean_expression
+// ``
+//
+// Oh and one last thing. The equals method is faulty.
+// http://www.artima.com/lejava/articles/equality.html
+
 //Class to model a Vehicle
 //Used for inheritance only so its abstract
 public abstract class Vehicle{
@@ -69,11 +90,14 @@ public abstract class Vehicle{
 	}	
 
 	// equals() method
+	// ORLY?? IF STATEMENT ?? R U KIDIN MAH??
 	public boolean equals(Vehicle vehicleIn){
-		if(this.number == vehicleIn.number)
-			return true;
-		else
-			return false;
+		//		if(this.number == vehicleIn.number)
+		//			return true;
+		//		else
+		//			return false;
+		// #boolean #incompetent #jecodeaveclecul
+		return this.number == vehicleIn.number;
 	}
 
 	// decreaseValue() method	
@@ -104,15 +128,17 @@ public abstract class Vehicle{
 
 	// calculateAge() - calculates the age
 	public int calculateAge(){
-		int currentYear = Year.now().getValue();
-		return currentYear - year;
+		// in this case, the use of 'this' is a good way of disambiguation
+		return Year.now().getValue() - this.year;
 	}
 
 	// qualifyForScrappage() method
+	// AGAIN ?!?!?!?!?!?
 	public boolean qualifyForScrappage(){  
-		if(calculateAge() >= 10)
-			return true;
-		else
-			return false;
+		//		if(calculateAge() >= 10)
+		//			return true;
+		//		else
+		//			return false;
+		return calculateAge() >= 10;
 	}
 }
