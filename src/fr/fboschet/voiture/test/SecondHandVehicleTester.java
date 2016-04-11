@@ -3,7 +3,6 @@ package fr.fboschet.voiture.test;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import fr.fboschet.voiture.SecondHandVehicle;
@@ -14,8 +13,7 @@ import fr.fboschet.voiture.ui.SecondHandVehicleFrame;
 
 public class SecondHandVehicleTester{
 	public static void main(String args[]){
-// OMG
-// 80's called, they want their arrays back.....
+		
 //		// Declare an Array of 5 SecondHandVehicles called vehicles
 //		final int NUMBER_OF_VEHICLES = 5;
 //		SecondHandVehicle[] vehicles = new SecondHandVehicle[NUMBER_OF_VEHICLES];
@@ -39,22 +37,28 @@ public class SecondHandVehicleTester{
 		JSONParser jp = SeconHandVehicleLoader.getInstance("res/car1.json");
 
 		List<Vehicle> vehicles = new ArrayList<>();
+		// popultate our list with vehicles from the json file
 		jp.populate(vehicles);
 
 		// showInputDialog() passing in the vehicles array
 		// returnedValue will get the selected vehicle
-		SecondHandVehicle returnedValue = (SecondHandVehicle)JOptionPane.showInputDialog(null, "Choose a SecondHandVehicle", 
+		SecondHandVehicle currVehicle = (SecondHandVehicle)JOptionPane.showInputDialog(null, "Choose a SecondHandVehicle", 
 				"VEHICLES AVAILABLE", JOptionPane.INFORMATION_MESSAGE, null, vehicles.toArray(), vehicles.get(0));
-
-
-		// CONSTRUCT a SecondHandVehicleFrame object called frame, passing the selected SecondHandVehicle into the constrctor
-		SecondHandVehicleFrame frame = new SecondHandVehicleFrame(returnedValue);
-
-		// Do whatever to frame object
-		frame.setTitle("SECOND HAND VEHICLE OPTIONS");
-		frame.pack();	
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLocationRelativeTo(null);					
-		frame.setVisible(true);
+		
+		
+		SecondHandVehicleFrame frameFactory = SecondHandVehicleFrame.getInstance();
+		
+		frameFactory.run(currVehicle);
+		
+		// To construct items you need factories (or equivalents)
+//		// CONSTRUCT a SecondHandVehicleFrame object called frame, passing the selected SecondHandVehicle into the constrctor
+//		SecondHandVehicleFrame frame = new SecondHandVehicleFrame(returnedValue);
+//
+//		// Do whatever to frame object
+//		frame.setTitle("SECOND HAND VEHICLE OPTIONS");
+//		frame.pack();	
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frame.setLocationRelativeTo(null);					
+//		frame.setVisible(true);
 	}
 }

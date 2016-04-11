@@ -31,7 +31,7 @@ public class SecondHandVehicleBuilder implements VehicleBuilder {
 		}catch(JSONException e){
 			e.printStackTrace();
 		}
-			// I may need to 
+			// I may need to use a more exceptions.
 			return new SecondHandVehicle("error", "error", -1, -1, -1);
 	}
 

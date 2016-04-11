@@ -21,6 +21,10 @@ public class SecondHandVehicle extends Vehicle{
 	public String toString(){
 		return super.toString() + ", " + numberOfOwners + " owner(s).";
 	}	
+	
+	public int getNumberOfOwners() {
+		return this.numberOfOwners;
+	}
 
 	// equals() method
 	// AND AGAIN, AND AGAIN, ...
