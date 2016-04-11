@@ -1,8 +1,8 @@
-# GROCACA
+# MAGUIQUE
 
-Le dépot de l'assignment 2.
+Le dÃ©pot de l'assignment 2.
 
-C'etait chiant comme la pluie du coup j'ai décidé de le rendre encore plus chiant.
+C'etait chiant comme la pluie du coup j'ai dÃ©cidÃ© de le rendre encore plus chiant.
 
 J'ai completement fait nimportequoi. Du parser JSON (deja fini) aux trucs completment idiots comme des patterns inutiles (mais swaggy) dans tous les sens et probablement (si je ne suis pas une mega grosse feignasse) un module pour compiler/cherger dynamiquement des classes (et evidemment faire nimportequoi qvec) 
 
