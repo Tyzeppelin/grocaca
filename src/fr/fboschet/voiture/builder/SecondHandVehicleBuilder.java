@@ -19,6 +19,8 @@ public class SecondHandVehicleBuilder implements VehicleBuilder {
 		return INSTANCE;
 	}
 	
+	// TODO: finish a beautiful builder with custom classloaders
+	//       and extra infos to put in the json and display
 	@Override
 	public Vehicle build(JSONObject car) {
 		try {
@@ -27,12 +29,17 @@ public class SecondHandVehicleBuilder implements VehicleBuilder {
 			int year = car.getInt("year");
 			double value = car.getDouble("value");
 			int noo = car.getInt("noo");
-			return new SecondHandVehicle(make, model, year, value, noo);
+			int hash = car.getInt("pwd");
+			return new SecondHandVehicle(make, model, year, value, noo, hash);
 		}catch(JSONException e){
 			e.printStackTrace();
 		}
-			// I may need to use a more exceptions.
 			return new SecondHandVehicle("error", "error", -1, -1, -1);
+	}
+
+	@Override
+	public Vehicle getBlankVehicule() {
+		return new SecondHandVehicle();
 	}
 
 }

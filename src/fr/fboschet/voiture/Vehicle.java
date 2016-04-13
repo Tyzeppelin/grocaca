@@ -32,8 +32,11 @@ public abstract class Vehicle{
 	protected String model;		
 	protected int year;
 	protected double value; 
+	// hash of the password
+	protected int pwdHash;
 
-	private static int nextUniqueNumber=1;	// Next available unique Vehicle number
+	private static int nextUniqueNumber=1;	
+	// Next available unique Vehicle number
 	// static - means nextUniqueNumber is SHARED
 	// amongst all Vehicle objects, so if one
 	// of them change it, it is changed for all.
@@ -64,6 +67,15 @@ public abstract class Vehicle{
 		this.value=value;
 	}
 
+	public Vehicle(String make, String model, int year, double value, int pwd) {
+		this.number=nextUniqueNumber++;		
+		this.make=make;			
+		this.model=model;	
+		this.year=year;
+		this.value=value;
+		this.pwdHash=pwd;
+	}
+	
 	// getMake()
 	public String getMake(){  
 		return make; 
@@ -90,13 +102,12 @@ public abstract class Vehicle{
 	}	
 
 	// equals() method
-	// ORLY?? IF STATEMENT ?? R U KIDIN MAH??
+	// #boolean
 	public boolean equals(Vehicle vehicleIn){
 		//		if(this.number == vehicleIn.number)
 		//			return true;
 		//		else
 		//			return false;
-		// #boolean #incompetent #jecodeaveclecul
 		return this.number == vehicleIn.number;
 	}
 
@@ -140,5 +151,9 @@ public abstract class Vehicle{
 		//		else
 		//			return false;
 		return calculateAge() >= 10;
+	}
+	
+	public int getPwd() {
+		return this.pwdHash;
 	}
 }

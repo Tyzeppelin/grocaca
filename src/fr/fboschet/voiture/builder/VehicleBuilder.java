@@ -4,7 +4,23 @@ import org.json.JSONObject;
 
 import fr.fboschet.voiture.Vehicle;
 
+/**
+ * 
+ * @author Francois Boschet
+ *
+ */
 public interface VehicleBuilder {
 	
-	public Vehicle build(JSONObject car);	
+	/**
+	 * Build a car given a JSONObject
+	 * @param car
+	 * @return
+	 */
+	public Vehicle build(JSONObject car);
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public Vehicle getBlankVehicule();	
 }

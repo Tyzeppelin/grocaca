@@ -16,6 +16,12 @@ public class SecondHandVehicle extends Vehicle{
 		super(make,model,year,value);
 		this.numberOfOwners = numberOfOwners; 
 	}
+	
+	// Constructor 3
+		public SecondHandVehicle(String make, String model, int year, double value, int numberOfOwners, int pwd){
+			super(make,model,year,value, pwd);
+			this.numberOfOwners = numberOfOwners; 
+		}
 
 	// toString() - called when a SecondHandVehicle object is displayed
 	public String toString(){
