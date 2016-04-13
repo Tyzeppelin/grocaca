@@ -15,10 +15,14 @@ import java.util.function.Consumer;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 
 public class ComponentFactory {
 
@@ -63,6 +67,20 @@ public class ComponentFactory {
 		return jtf;
 	}
 	
+	public JSpinner getJSpiner(double init) {
+		SpinnerNumberModel sModel = new SpinnerNumberModel(0.0, 0.0, init, 1.0);
+		JSpinner spinner = new JSpinner(sModel);
+		spinner.setValue(init);
+		spinner.setFont(new Font("Arial", Font.BOLD, 100));
+		// get the inner editor inside the JSpinner
+		// then set the alignment.
+		// We need this since JSpinner is only a container
+		((JSpinner.DefaultEditor)spinner.getEditor()).getTextField().setHorizontalAlignment(JFormattedTextField.LEFT);
+		// otherwise its ugly
+		((JSpinner.DefaultEditor)spinner.getEditor()).getTextField().setColumns(4);
+		return spinner;
+	}
+	
 	public JPanel getPanel() {
 		return new JPanel();
 	}
@@ -102,7 +120,4 @@ public class ComponentFactory {
 		
 		return frame;
 	}
-
-
-	
 }

@@ -5,13 +5,13 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
 import fr.fboschet.voiture.SecondHandVehicle;
 import fr.fboschet.voiture.builder.ComponentFactory;
@@ -76,8 +76,8 @@ public class SecondHandVehicleFrame{
 		// A hidden panel which is shown when edit mode is active
 		JPanel editValue = factory.getBorderPanel();
 
-		// TODO: formattedfield
-		JTextField editField = factory.getJtextField(value.getText());
+		// We use a JSpinner to 
+		JSpinner editField = factory.getJSpiner(vehicle.getValue());
 		JPanel buttons = factory.getGridPanel(2,  1);
 
 		JButton update = factory.getJButton("update");
@@ -96,6 +96,7 @@ public class SecondHandVehicleFrame{
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand() == editMode.getActionCommand()) {
 					valuePanel.removeAll();
+					editField.setValue(vehicle.getValue());
 					valuePanel.add(editValue);
 					main.pack();
 				}
@@ -109,7 +110,8 @@ public class SecondHandVehicleFrame{
 					boolean correctValue = true;
 					double newValue = 0.0;
 					try {
-						newValue = Double.parseDouble(editField.getText());
+						newValue = (Double)editField.getValue();
+						System.out.println("jj"+newValue);
 					}catch (NumberFormatException ex) {
 						JOptionPane.showMessageDialog(main, "No.", "Error", JOptionPane.ERROR_MESSAGE);
 						correctValue = false;
@@ -147,8 +149,45 @@ public class SecondHandVehicleFrame{
 		//
 		
 		
-		
+		// Display tax and qualifiedForScrappage()
 		JPanel taxPanel = factory.getPanel();
+		
+		// display the tax and 
+		JPanel taxDisplay = factory.getFlowPanel();
+		JLabel taxLabel = factory.getJlabel("Tax : ", 20);
+		JButton updateTax = factory.getJButton("calculate");
+		updateTax.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (e.getActionCommand() == updateTax.getActionCommand()) {
+					SpinnerNumberModel sModel = new SpinnerNumberModel(0.0, 0.0, 4000.0, 1.0);
+					JSpinner spinner = new JSpinner(sModel);
+					int option = JOptionPane.showOptionDialog(null, 
+							spinner, 
+							"Engine Size", 
+							JOptionPane.OK_CANCEL_OPTION, 
+							JOptionPane.QUESTION_MESSAGE, 
+							null, null, null);
+					if (option == JOptionPane.OK_OPTION) {
+					    	double tax = vehicle.calculateTaxPayable((Double)spinner.getValue());
+					    	taxLabel.setText("Tax : " + tax + "€");
+					    	taxDisplay.remove(updateTax);
+					}
+				}
+			}
+		});
+		
+		taxDisplay.add(taxLabel);
+		taxDisplay.add(updateTax);
+		
+		// display scrappage
+		JPanel scrappageDisplay = factory.getPanel();
+		JLabel scrappage = factory.getJlabel("Good for scrappage? : "+vehicle.qualifyForScrappage(), 20);
+		scrappageDisplay.add(scrappage);
+		
+		
+		taxPanel.add(taxDisplay);
+		taxPanel.add(scrappageDisplay);
 		//
 
 		mainPanel.add(infoPanel);
