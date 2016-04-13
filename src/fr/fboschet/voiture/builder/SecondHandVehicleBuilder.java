@@ -8,6 +8,10 @@ import fr.fboschet.voiture.Vehicle;
 
 public class SecondHandVehicleBuilder implements VehicleBuilder {
 
+	// This Builder is a lazy singleton.
+	// It means there will only be one instance of it
+	// @runtime, and it will be instantiate only when it
+	// will be needed
 	private static SecondHandVehicleBuilder INSTANCE;
 	
 	private SecondHandVehicleBuilder() {}

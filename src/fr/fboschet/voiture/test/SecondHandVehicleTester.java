@@ -52,6 +52,7 @@ public class SecondHandVehicleTester{
 		if (currVehicle != null) {
 			int hash = 0;
 			int attempt = 0;
+			// 3 attempt to 
 			while(hash != currVehicle.getPwd() && attempt < 3) {
 				hash = dialogFactory.passwordDialog();
 				attempt++;
