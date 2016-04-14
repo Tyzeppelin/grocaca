@@ -44,25 +44,23 @@ public class SecondHandVehicleTester{
 		SecondHandVehicleFrame frameFactory = SecondHandVehicleFrame.getInstance();
 		DialogFactory dialogFactory = DialogFactory.getInstance();
 
-
 		// showInputDialog() passing in the vehicles array
 		// returnedValue will get the selected vehicle
 		SecondHandVehicle currVehicle = dialogFactory.choiceDialog(vehicles);
 
+		// I.E. if the user selected one vehicle
 		if (currVehicle != null) {
 			int hash = 0;
 			int attempt = 0;
-			// 3 attempt to 
-			while(hash != currVehicle.getPwd() && attempt < 3) {
+			// 3 attempt to input the correct password
+			while(hash != currVehicle.getPwd() && attempt < 3 && hash != -1) {
 				hash = dialogFactory.passwordDialog();
 				attempt++;
 			}
 			if (hash == currVehicle.getPwd() && attempt < 4) {
 				frameFactory.run(currVehicle);
 			}
-			else {
-				JOptionPane.showMessageDialog(null, "Too many failed attempts", "Failure", JOptionPane.ERROR_MESSAGE);
-			}
+			else if (hash != -1) {JOptionPane.showMessageDialog(null, "Too many failed attempts", "Failure", JOptionPane.ERROR_MESSAGE);}
 		}
 	}
 }

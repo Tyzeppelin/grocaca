@@ -31,9 +31,12 @@ public class DialogFactory {
 		panel.add(label);
 		panel.add(pass);
 		String[] options = new String[]{"OK", "Cancel"};
-		JOptionPane.showOptionDialog(null, panel, "The title",
+		int cancel = JOptionPane.showOptionDialog(null, panel, "The title",
 		                         JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
-		                         null, options, options[1]);
+		                         null, options, options[0]);
+		if (cancel == 1) {
+			return -1;
+		}
 		return new String(pass.getPassword()).hashCode();
 	}
 

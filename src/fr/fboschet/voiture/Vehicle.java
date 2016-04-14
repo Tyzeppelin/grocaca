@@ -20,8 +20,6 @@ import java.time.Year;
 // return boolean_expression
 // ``
 //
-// Oh and one last thing. The equals method is faulty.
-// http://www.artima.com/lejava/articles/equality.html
 
 //Class to model a Vehicle
 //Used for inheritance only so its abstract

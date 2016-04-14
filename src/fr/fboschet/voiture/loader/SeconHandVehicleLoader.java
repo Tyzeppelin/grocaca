@@ -15,6 +15,8 @@ import fr.fboschet.voiture.builder.VehicleBuilder;
 
 public class SeconHandVehicleLoader implements JSONParser {
 	
+	// TODO: I should use a List of file and make the populate method thread-safe
+	// in this case this is not relevant since we call the parser only once.
 	private static File toParse;
 		
 	private static SeconHandVehicleLoader INSTANCE;
@@ -40,7 +42,7 @@ public class SeconHandVehicleLoader implements JSONParser {
 			// Read a file (java-lambda style)
 			Files.lines(toParse.toPath()).forEach((String s) -> sb.append(s));
 		} catch (IOException e) {
-			// in case the file don'exist
+			// in case the file don't exist
 			sb.append("{}");
 		}
 		// cerate a jsonobject from our file
